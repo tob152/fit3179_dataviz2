@@ -1,0 +1,27 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": { "text": "2022 Finalists" },
+    "data": {
+        "url": "../data/country_data.csv",
+        "format": {
+            "type": "topojson",
+            "feature": "countries"
+        }
+    },
+    "transform": [{
+        "lookup": "id",
+        "from": {
+          "data": {
+            "url": "../data/country_data.csv"
+          },
+          "key": "id",
+          "fields": ["country"]
+        }
+      }],
+    "mark": "geoshape",
+    "encoding": {
+        "x": { "field": "daily_cost", "type": "quantitative" },
+        "y": { "field": "city", "type": "nominal" }
+    }
+}
+    
